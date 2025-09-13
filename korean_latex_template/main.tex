@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{kotex}
+\usepackage{fontspec}
+\setmainfont{NanumGothic}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Korean LaTeX Template}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\input{sections/intro.tex}
+\input{sections/conclusion.tex}
+
+\bibliographystyle{plain}
+\bibliography{bib/references}
+\end{document}
