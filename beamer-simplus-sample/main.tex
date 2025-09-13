@@ -1,0 +1,42 @@
+\documentclass{beamer}
+
+% Korean-friendly: XeLaTeX + kotex
+\usepackage{kotex}
+
+% Local Simplus theme (blue by default)
+\usepackage[blue]{themes/simplus/beamerthemesimplus}
+
+\title[Sample]{비머 발표 템플릿 (Simplus)}
+\author[Kyung]{경민기}
+\institute{}
+\date{\today}
+
+% Show section-specific outline at each section start (after initial pages)
+\AtBeginSection[]{
+  \begin{frame}{Outline}
+    \tableofcontents[currentsection,hideallsubsections]
+  \end{frame}
+}
+
+\begin{document}
+
+% Title page and Outline without header/footer
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}[plain]{Outline}
+  \tableofcontents
+\end{frame}
+
+\input{slides/intro.tex}
+\input{slides/method.tex}
+\input{slides/result.tex}
+
+\begin{frame}[allowframebreaks]{References}
+  \nocite{*}
+  \bibliographystyle{plain}
+  \bibliography{bib/references}
+\end{frame}
+
+\end{document}

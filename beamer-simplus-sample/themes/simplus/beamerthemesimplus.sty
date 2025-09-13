@@ -1,0 +1,70 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemesimplus}[2025/09/13 Minimal Simplus-like beamer theme]
+
+\newif\if@simplusblue \newif\if@simplusred \newif\if@simplusgreen \newif\if@simplusgray
+\DeclareOption{blue}{\@simplusbluetrue}
+\DeclareOption{red}{\@simplusredtrue}
+\DeclareOption{green}{\@simplusgreentrue}
+\DeclareOption{gray}{\@simplusgraytrue}
+\ExecuteOptions{blue}
+\ProcessOptions\relax
+
+\RequirePackage{etoolbox}
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+
+\definecolor{SimplusBlue}{RGB}{33,115,170}
+\definecolor{SimplusRed}{RGB}{200,60,60}
+\definecolor{SimplusGreen}{RGB}{50,150,95}
+\definecolor{SimplusGray}{RGB}{90,90,90}
+
+\newcommand{\simplus@maincolor}{SimplusBlue}
+\if@simplusred\renewcommand{\simplus@maincolor}{SimplusRed}\fi
+\if@simplusgreen\renewcommand{\simplus@maincolor}{SimplusGreen}\fi
+\if@simplusgray\renewcommand{\simplus@maincolor}{SimplusGray}\fi
+
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=\simplus@maincolor}
+
+\setbeamercolor{title}{fg=\simplus@maincolor}
+\setbeamercolor{frametitle}{fg=white,bg=\simplus@maincolor}
+\setbeamerfont{frametitle}{series=\bfseries,size=\large}
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.2ex,dp=1ex,leftskip=1em]{frametitle}%
+    \insertframetitle%
+    \ifx\insertframesubtitle\@empty\else {\normalsize\mdseries\ - \insertframesubtitle}\fi%
+  \end{beamercolorbox}%
+}
+
+\setbeamertemplate{itemize item}{\raise0.5pt\hbox{\scriptsize\(\blacktriangleright\)}}
+\setbeamertemplate{itemize subitem}{\scriptsize\(\bullet\)}
+\setbeamertemplate{itemize subsubitem}{\tiny\(\circ\)}
+\setbeamercolor{itemize item}{fg=\simplus@maincolor}
+\setbeamercolor{itemize subitem}{fg=\simplus@maincolor}
+\setbeamercolor{itemize subsubitem}{fg=\simplus@maincolor}
+
+\setbeamercolor{block title}{fg=white,bg=\simplus@maincolor}
+\setbeamercolor{block body}{fg=black,bg=gray!5}
+
+\setbeamercolor{footline}{fg=black,bg=gray!10}
+\setbeamerfont{footline}{size=\tiny}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1ex,leftskip=1em]{footline}%
+    \insertshortauthor{} \hspace{0.5em} \insertshortinstitute
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1ex,rightskip=1em]{footline}%
+    \hfill \insertshorttitle{} \hspace{0.75em} \insertframenumber{} / \inserttotalframenumber
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\setbeamertemplate{headline}{%
+  \leavevmode\hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.6ex]{frametitle}%
+    \end{beamercolorbox}}%
+}
+
+\setbeamertemplate{navigation symbols}{}
